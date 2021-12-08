@@ -29,6 +29,9 @@ def networkDelayTime(times, n, k):
         while q:
             now = heapq.heappop(q)
             cost = distance[now]
+
+            if cost < distance[now]:
+                continue
             
             # 연결된 노드 확인
             for i in graph[now]:
