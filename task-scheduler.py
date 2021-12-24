@@ -9,12 +9,9 @@ class Solution:
         result = 0
         # Counter
         counter = collections.Counter(tasks)
-        
-        count = 0
 
         while True:
             sub_count = 0
-            count += 1
 
             # 개수 순 추출
             for task, _ in counter.most_common(n + 1):
