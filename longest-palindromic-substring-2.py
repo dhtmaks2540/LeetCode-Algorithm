@@ -21,6 +21,42 @@ class Solution:
 
         return result
 
+    # 다이나믹 프로그래밍 방식
+    """
+    
+    https://leetcode.com/problems/longest-palindromic-substring/discuss/900639/Python-Solution-%3A-with-detailed-explanation-%3A-using-DP
+    
+    """
+    def longestPalindrome(self, s: str) -> str:
+        longest_palindrom = ''
+        dp = [[0]*len(s) for _ in range(len(s))]
+        # 대각선 True로 채우기(한 글자에 해당)
+        for i in range(len(s)):
+            dp[i][i] = True
+            longest_palindrom = s[i]
+
+        # dp 테이블 채우기
+        for i in range(len(s)-1,-1,-1):
+            for j in range(i+1,len(s)):
+                """
+                if len slicied sub_string is just one letter if the characters are equal,
+                we can say they are palindomr dp[i][j] =True
+
+                if the slicied sub_string is longer than 1, 
+                then we should check if the inner string is also palindrom (check dp[i+1][j-1] is True)
+                
+                """
+                if s[i] == s[j]:
+                    if j-i ==1 or dp[i+1][j-1] is True:
+                        dp[i][j] = True
+
+                        # maximum palindrome sequence
+                        if len(longest_palindrom) < len(s[i:j+1]):
+                            longest_palindrom = s[i:j+1]
+
+        return longest_palindrom
+
+
 s = "babad"
 solution = Solution()
 print(solution.longestPalindrome(s))
