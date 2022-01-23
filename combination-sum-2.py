@@ -2,7 +2,7 @@ from typing import List
 
 
 class Solution:
-    # DFS를 이용하여 접근
+    # DFS와 백트래킹을 이용하여 접근
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         result = []
         
@@ -15,6 +15,7 @@ class Solution:
                 return
             
             # 자신부터 하위 원소까지의 나열 재귀 호출
+            # 목표값에서 현재의 값을 빼는 형태로 재귀 호출
             for i in range(index, len(candidates)):
                 dfs(csum - candidates[i], i, path + [candidates[i]])
                 
@@ -24,4 +25,4 @@ class Solution:
 candidates = [2,3,6,7]
 target = 7 
 solution = Solution()
-print(solution.combinationSum(candidates))
+print(solution.combinationSum(candidates, target))
