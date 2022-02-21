@@ -2,7 +2,7 @@ from typing import List
 
 # 각 행은 왼쪽에서 오른쪽으로 오름 차순
 # 각 행의 첫 번째 숫자는 이전 행의 마지막 숫자보다 더 크다
-class Solution
+class Solution:
     # 조건을 활용하여 첫 행의 맨 뒤에서부터 탐색(투 포인터..)
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
         row = 0
